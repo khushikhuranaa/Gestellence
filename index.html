@@ -529,24 +529,17 @@ function classifyASL(lm) {
   }
 
   // HELLO — open palm (all 4 fingers extended), hand in upper half of frame
-  // finger open checks
-const thumbOpen = lm[4].x < lm[3].x; // thumb side
-const indexOpen = lm[8].y < lm[6].y;
-const middleOpen = lm[12].y < lm[10].y;
-const ringOpen = lm[16].y < lm[14].y;
-const pinkyOpen = lm[20].y < lm[18].y;
+  // HELLO — open palm 👋 (improved)
+const thumbOpen = lm[4].x < lm[3].x; // thumb side open
 
-// hand position (upper part of screen)
+const spread =
+  Math.abs(lm[8].x - lm[12].x) > 0.04 &&
+  Math.abs(lm[12].x - lm[16].x) > 0.04;
+
 const handUp = lm[0].y < 0.6;
 
-// spread check (important for open palm)
-const spread =
-  Math.abs(lm[8].x - lm[12].x) > 0.03 &&
-  Math.abs(lm[12].x - lm[16].x) > 0.03;
-
-// FINAL CONDITION
-if (thumbOpen && indexOpen && middleOpen && ringOpen && pinkyOpen && handUp && spread) {
-    return { word: "hello", confidence: 0.9 };
+if (thumbOpen && idx && mid && ring && pink && spread && handUp) {
+  return { word: 'hello', confidence: 0.92 };
 }
 
   return { word:null, confidence:0 };
