@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gestellence</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <!-- MediaPipe Hands -->
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
@@ -22,12 +21,10 @@
       --shadow:0 2px 16px rgba(0,0,0,.07);--shadow-h:0 8px 32px rgba(0,0,0,.13)
     }
     body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text-primary);min-height:100vh;overflow-x:hidden}
-
-    /* ── SCREENS ── */
     .screen{display:none;min-height:100vh}
     .screen.active{display:flex;flex-direction:column}
 
-    /* ── HOME ── */
+    /* HOME */
     #home{align-items:center;justify-content:center;padding:2rem;gap:3rem}
     .home-header{text-align:center}
     .eyebrow{font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-mid);margin-bottom:.75rem}
@@ -45,7 +42,7 @@
     .card-cta{margin-top:1.5rem;display:flex;align-items:center;gap:6px;font-size:.82rem;font-weight:500}
     .card-a .card-cta{color:var(--accent)}.card-b .card-cta{color:var(--teal)}
 
-    /* ── SHARED INNER ── */
+    /* INNER */
     .inner-screen{height:100vh}
     .topbar{display:flex;align-items:center;gap:1rem;padding:.9rem 1.5rem;background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0}
     .back-btn{display:flex;align-items:center;gap:6px;font-size:.85rem;font-weight:500;color:var(--text-secondary);cursor:pointer;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:transparent;transition:background .15s,color .15s}
@@ -61,9 +58,9 @@
     .dot-purple{background:var(--accent-mid)}.dot-teal{background:var(--teal-mid)}
     .panel-body{flex:1;overflow-y:auto;padding:1.25rem;min-height:0}
 
-    /* ── SCREEN A ── */
+    /* SCREEN A */
     .col-left-a{flex:1;display:flex;flex-direction:column;gap:1.25rem;min-width:0}
-    .col-right-a{width:44%;display:flex;flex-direction:column;min-width:0}
+    .col-right-a{width:46%;display:flex;flex-direction:column;min-width:0}
     .word-chips-grid{display:flex;flex-wrap:wrap;gap:.7rem;align-content:center;justify-content:center;height:100%}
     @keyframes chipBounce{0%{transform:translateY(0) scale(1)}30%{transform:translateY(-8px) scale(1.07)}60%{transform:translateY(-3px) scale(1.02)}100%{transform:translateY(0) scale(1)}}
     .word-chip{padding:.55rem 1.3rem;border-radius:50px;border:1.5px solid var(--border-md);background:var(--surface);font-size:.92rem;font-weight:500;color:var(--text-primary);cursor:pointer;transition:border-color .15s,background .15s,color .15s,box-shadow .15s;box-shadow:var(--shadow);user-select:none}
@@ -77,28 +74,27 @@
     @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
     .voice-status{font-size:.85rem;color:var(--text-muted);line-height:1.5}
     .voice-status strong{display:block;font-size:.9rem;color:var(--text-primary);margin-bottom:2px}
-    .gesture-display{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.85rem;text-align:center}
-    .gesture-label{font-family:'Playfair Display',serif;font-size:1.55rem;color:var(--accent)}
-    .gesture-desc{font-size:.84rem;color:var(--text-secondary);line-height:1.6;max-width:255px}
+
+    /* Gesture display panel */
+    .gesture-display{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.6rem;text-align:center}
+    .gesture-word-label{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--accent);margin-top:.25rem}
+    .gesture-sign-label{font-size:.8rem;font-weight:500;color:var(--text-muted);letter-spacing:.05em;text-transform:uppercase}
     .gesture-placeholder-txt{font-size:.85rem;color:var(--text-muted);line-height:1.65}
-    .speak-btn-sm{display:flex;align-items:center;gap:7px;padding:7px 16px;border:1px solid var(--accent-mid);border-radius:8px;background:var(--accent-light);color:var(--accent);font-family:'Inter',sans-serif;font-size:.82rem;font-weight:500;cursor:pointer;transition:opacity .15s;margin-top:.2rem}
+    .speak-btn-sm{display:flex;align-items:center;gap:7px;padding:7px 16px;border:1px solid var(--accent-mid);border-radius:8px;background:var(--accent-light);color:var(--accent);font-family:'Inter',sans-serif;font-size:.82rem;font-weight:500;cursor:pointer;transition:opacity .15s}
     .speak-btn-sm:hover{opacity:.78}
-    @keyframes handFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-    .hand-float{animation:handFloat 2.8s ease-in-out infinite}
+
+    /* Hand SVG animations */
     @keyframes gestureFade{from{opacity:0;transform:scale(.88) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
     .gesture-anim{animation:gestureFade .38s ease forwards}
 
-    /* ── SCREEN B ── */
+    /* SCREEN B */
     .col-left-b{width:50%;display:flex;flex-direction:column;gap:1.25rem;min-width:0}
     .col-right-b{flex:1;display:flex;flex-direction:column;gap:1.25rem;min-width:0}
     .panel-camera{flex:1;min-height:0}
-
-    /* Camera canvas overlay */
-    .cam-wrap{position:relative;width:100%;flex-shrink:0}
+    .cam-wrap{position:relative;width:100%}
     #video-feed{width:100%;border-radius:var(--radius-sm);object-fit:cover;background:#111;display:none;transform:scaleX(-1)}
     #video-feed.on{display:block}
     #landmark-canvas{position:absolute;top:0;left:0;width:100%;height:100%;border-radius:var(--radius-sm);pointer-events:none;transform:scaleX(-1)}
-
     .cam-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:.85rem}
     .cam-placeholder{display:flex;flex-direction:column;align-items:center;gap:.45rem;color:var(--text-muted);font-size:.83rem;text-align:center}
     .cam-btn{padding:8px 20px;border:1.5px solid var(--teal-mid);border-radius:8px;background:var(--teal-light);color:var(--teal);font-family:'Inter',sans-serif;font-size:.85rem;font-weight:500;cursor:pointer;transition:opacity .15s}
@@ -106,24 +102,18 @@
     .cam-btn.stop{background:#fcebeb;border-color:#f09595;color:#a32d2d}
     .live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--teal-mid);animation:pulse 1.2s infinite;margin-right:5px}
     .cam-live{font-size:.78rem;color:var(--teal);font-weight:500;display:none;margin-left:auto}
-
-    /* Detection confidence bar */
     .conf-bar-wrap{width:100%;height:5px;background:var(--border);border-radius:4px;overflow:hidden;display:none}
     .conf-bar-wrap.visible{display:block}
     .conf-bar{height:100%;background:var(--teal-mid);border-radius:4px;transition:width .2s ease}
-
-    /* Detected sign badge */
     .detect-badge{font-size:.78rem;font-weight:600;color:var(--teal);background:var(--teal-light);padding:3px 10px;border-radius:20px;display:none}
     .detect-badge.visible{display:inline-block}
-
-    /* Ref chips */
-    .panel-refs{height:168px;flex-shrink:0}
+    .panel-refs{height:172px;flex-shrink:0}
     .refs-row{display:flex;gap:.55rem;height:100%;align-items:center}
-    .ref-chip{flex:1;min-width:0;border-radius:var(--radius-sm);border:1.5px solid var(--border-md);background:var(--surface);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:.45rem .2rem;transition:border-color .15s,background .15s,transform .15s;box-shadow:var(--shadow)}
+    .ref-chip{flex:1;min-width:0;border-radius:var(--radius-sm);border:1.5px solid var(--border-md);background:var(--surface);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:.4rem .2rem;transition:border-color .15s,background .15s,transform .15s;box-shadow:var(--shadow)}
     .ref-chip:hover{border-color:var(--teal-mid);background:var(--teal-light);transform:translateY(-3px)}
     .ref-chip.detected{border-color:var(--teal);background:var(--teal-light);box-shadow:0 4px 18px rgba(15,110,86,.22)}
     .ref-chip.detected .ref-label{color:var(--teal)}
-    .ref-label{font-size:.68rem;font-weight:600;color:var(--text-secondary);text-align:center}
+    .ref-label{font-size:.65rem;font-weight:600;color:var(--text-secondary);text-align:center}
     .panel-text-out{flex:1;min-height:0}
     .panel-voice-out{height:128px;flex-shrink:0}
     .detected-word{font-family:'Playfair Display',serif;font-size:2rem;color:var(--teal);margin-bottom:.4rem}
@@ -138,11 +128,11 @@
 </head>
 <body>
 
-<!-- ═══════ HOME ═══════ -->
+<!-- HOME -->
 <section class="screen active" id="home">
   <div class="home-header">
     <p class="eyebrow">American Sign Language Interface</p>
-    <h1>GestureBridge</h1>
+    <h1>Gestellence</h1>
     <p>Bridging the gap between sign language and speech — in real time.</p>
   </div>
   <div class="cards-row">
@@ -161,7 +151,7 @@
   </div>
 </section>
 
-<!-- ═══════ SCREEN A ═══════ -->
+<!-- SCREEN A -->
 <section class="screen inner-screen" id="screen-a">
   <div class="topbar">
     <button class="back-btn" onclick="goHome()">← Back</button>
@@ -174,11 +164,11 @@
         <div class="panel-header"><span class="panel-dot dot-purple"></span><h3>Select a Word</h3></div>
         <div class="panel-body">
           <div class="word-chips-grid">
-            <div class="word-chip" data-word="hello"     onclick="selectWord('hello')">Hello</div>
-            <div class="word-chip" data-word="thank you" onclick="selectWord('thank you')">Thank You</div>
-            <div class="word-chip" data-word="yes"       onclick="selectWord('yes')">Yes</div>
-            <div class="word-chip" data-word="no"        onclick="selectWord('no')">No</div>
-            <div class="word-chip" data-word="please"    onclick="selectWord('please')">Please</div>
+            <div class="word-chip" data-word="hello"    onclick="selectWord('hello')">Hello</div>
+            <div class="word-chip" data-word="ok"       onclick="selectWord('ok')">OK</div>
+            <div class="word-chip" data-word="yes"      onclick="selectWord('yes')">Yes</div>
+            <div class="word-chip" data-word="no"       onclick="selectWord('no')">No</div>
+            <div class="word-chip" data-word="call me"  onclick="selectWord('call me')">Call Me</div>
           </div>
         </div>
       </div>
@@ -189,7 +179,7 @@
             <button class="voice-btn" id="mic-btn" onclick="toggleMic()">🎤</button>
             <div class="voice-status">
               <strong id="mic-label">Tap to speak</strong>
-              <span id="mic-sub">Say: Hello, Thank You, Yes, No, or Please</span>
+              <span id="mic-sub">Say: Hello, OK, Yes, No, or Call Me</span>
             </div>
           </div>
         </div>
@@ -200,8 +190,8 @@
         <div class="panel-header"><span class="panel-dot dot-purple"></span><h3>ASL Gesture</h3></div>
         <div class="panel-body">
           <div class="gesture-display" id="gesture-display">
-            <svg width="80" height="80" viewBox="0 0 80 80" style="opacity:.15"><circle cx="40" cy="40" r="36" fill="none" stroke="#7f77dd" stroke-width="1.5"/><text x="40" y="52" text-anchor="middle" font-size="32" fill="#7f77dd">🤟</text></svg>
-            <p class="gesture-placeholder-txt">Select a word on the left<br>or speak one to see its<br>ASL gesture here.</p>
+            <svg width="80" height="80" viewBox="0 0 80 80" style="opacity:.13"><circle cx="40" cy="40" r="36" fill="none" stroke="#7f77dd" stroke-width="1.5"/><text x="40" y="52" text-anchor="middle" font-size="32" fill="#7f77dd">🤟</text></svg>
+            <p class="gesture-placeholder-txt">Select a word on the left<br>or speak one to see<br>its ASL gesture here.</p>
           </div>
         </div>
       </div>
@@ -209,7 +199,7 @@
   </div>
 </section>
 
-<!-- ═══════ SCREEN B ═══════ -->
+<!-- SCREEN B -->
 <section class="screen inner-screen" id="screen-b">
   <div class="topbar">
     <button class="back-btn" onclick="goHome()">← Back</button>
@@ -219,7 +209,6 @@
   </div>
   <div class="content-area">
     <div class="col-left-b">
-      <!-- Camera panel -->
       <div class="panel panel-camera">
         <div class="panel-header">
           <span class="panel-dot dot-teal"></span><h3>Camera + Landmarks</h3>
@@ -239,23 +228,19 @@
           <div class="conf-bar-wrap" id="conf-bar-wrap"><div class="conf-bar" id="conf-bar" style="width:0%"></div></div>
         </div>
       </div>
-
-      <!-- Ref sign chips -->
       <div class="panel panel-refs">
         <div class="panel-header"><span class="panel-dot dot-teal"></span><h3>ASL Signs — click to translate</h3></div>
         <div class="panel-body" style="padding:.7rem 1rem">
           <div class="refs-row">
-            <div class="ref-chip" id="ref-hello"    onclick="pickRef('hello')">   <div id="rsv-hello"></div>    <span class="ref-label">Hello</span></div>
-            <div class="ref-chip" id="ref-thankyou" onclick="pickRef('thank you')"><div id="rsv-thankyou"></div> <span class="ref-label">Thank You</span></div>
-            <div class="ref-chip" id="ref-yes"      onclick="pickRef('yes')">     <div id="rsv-yes"></div>      <span class="ref-label">Yes</span></div>
-            <div class="ref-chip" id="ref-no"       onclick="pickRef('no')">      <div id="rsv-no"></div>       <span class="ref-label">No</span></div>
-            <div class="ref-chip" id="ref-please"   onclick="pickRef('please')">  <div id="rsv-please"></div>   <span class="ref-label">Please</span></div>
+            <div class="ref-chip" id="ref-hello"   onclick="pickRef('hello')">  <div id="rsv-hello"></div>   <span class="ref-label">Hello 👋🏻</span></div>
+            <div class="ref-chip" id="ref-ok"      onclick="pickRef('ok')">     <div id="rsv-ok"></div>      <span class="ref-label">OK 👌🏻</span></div>
+            <div class="ref-chip" id="ref-yes"     onclick="pickRef('yes')">    <div id="rsv-yes"></div>     <span class="ref-label">Yes ✊</span></div>
+            <div class="ref-chip" id="ref-no"      onclick="pickRef('no')">     <div id="rsv-no"></div>      <span class="ref-label">No ✌️</span></div>
+            <div class="ref-chip" id="ref-callme"  onclick="pickRef('call me')"><div id="rsv-callme"></div>  <span class="ref-label">Call Me 🤙🏻</span></div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Right col -->
     <div class="col-right-b">
       <div class="panel panel-text-out">
         <div class="panel-header"><span class="panel-dot dot-teal"></span><h3>Translation</h3></div>
@@ -285,82 +270,34 @@
 </section>
 
 <script>
-/* ════════════════════════════════════════
-   ASL DATA — SVGs + descriptions
-════════════════════════════════════════ */
+/* ═══════════════════════════════════════════
+   ASL DATA
+   Each entry has:
+     label    — display name
+     emoji    — the sign emoji
+     animClass — CSS animation class for the SVG
+     svg()    — function returning animated SVG hand
+     desc     — short description shown in Screen B
+═══════════════════════════════════════════ */
 const aslData = {
-  'hello': {
-    desc: 'Open your dominant hand flat, fingers together. Hold near your forehead and swing outward — like a relaxed salute.',
-    svg: () => `<svg viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="55" cy="88" rx="26" ry="33" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4"/>
-      <ellipse cx="27" cy="78" rx="8" ry="13" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4" transform="rotate(-20 27 78)"/>
-      <rect x="69" y="42" width="13" height="36" rx="6" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4"/>
-      <rect x="56" y="36" width="13" height="40" rx="6" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4"/>
-      <rect x="43" y="40" width="12" height="36" rx="6" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4"/>
-      <rect x="31" y="47" width="11" height="28" rx="5" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4"/>
-      <path d="M 82 50 Q 98 36 100 18" fill="none" stroke="#7f77dd" stroke-width="1.8" stroke-dasharray="4,3"/>
-      <polygon points="100,18 95,27 105,25" fill="#7f77dd"/>
-      <circle cx="55" cy="16" r="5" fill="#7f77dd" opacity=".45"/>
-    </svg>`
-  },
-  'thank you': {
-    desc: 'Touch the flat fingertips of your dominant hand to your chin, then move forward and slightly downward.',
-    svg: () => `<svg viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="55" cy="92" rx="26" ry="30" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4"/>
-      <ellipse cx="29" cy="86" rx="8" ry="12" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4" transform="rotate(-15 29 86)"/>
-      <rect x="30" y="56" width="50" height="13" rx="6" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4"/>
-      <circle cx="55" cy="30" r="7" fill="#ffb347" opacity=".65"/>
-      <text x="55" y="34" text-anchor="middle" font-size="7" fill="#7f77dd" font-family="Inter,sans-serif">chin</text>
-      <path d="M 55 50 L 55 38" fill="none" stroke="#7f77dd" stroke-width="1.8" stroke-dasharray="4,3"/>
-      <polygon points="55,38 50,47 60,47" fill="#7f77dd"/>
-    </svg>`
-  },
-  'yes': {
-    desc: 'Make a fist with your dominant hand, wrist loose. Bob the fist up and down twice — like a nodding motion.',
-    svg: () => `<svg viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg">
-      <rect x="33" y="58" width="48" height="50" rx="15" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4"/>
-      <line x1="47" y1="58" x2="47" y2="70" stroke="#c8956a" stroke-width="1"/>
-      <line x1="59" y1="58" x2="59" y2="70" stroke="#c8956a" stroke-width="1"/>
-      <line x1="71" y1="58" x2="71" y2="70" stroke="#c8956a" stroke-width="1"/>
-      <ellipse cx="35" cy="73" rx="9" ry="7" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4" transform="rotate(-30 35 73)"/>
-      <line x1="95" y1="78" x2="95" y2="52" stroke="#7f77dd" stroke-width="1.8"/>
-      <polygon points="95,52 91,61 99,61" fill="#7f77dd"/>
-      <line x1="95" y1="92" x2="95" y2="118" stroke="#7f77dd" stroke-width="1.8"/>
-      <polygon points="95,118 91,109 99,109" fill="#7f77dd"/>
-    </svg>`
-  },
-  'no': {
-    desc: 'Extend your index and middle fingers straight out together. Snap them down onto your extended thumb twice.',
-    svg: () => `<svg viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="55" cy="98" rx="24" ry="26" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4"/>
-      <rect x="58" y="46" width="12" height="40" rx="6" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4"/>
-      <rect x="71" y="46" width="12" height="40" rx="6" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4"/>
-      <rect x="35" y="70" width="30" height="11" rx="5" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4"/>
-      <path d="M 64 88 Q 52 98 52 110" fill="none" stroke="#7f77dd" stroke-width="1.8" stroke-dasharray="3,2"/>
-      <polygon points="52,110 48,101 56,101" fill="#7f77dd"/>
-    </svg>`
-  },
-  'please': {
-    desc: 'Place your flat dominant hand on your chest. Move it in a slow clockwise circle over your heart.',
-    svg: () => `<svg viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="55" cy="112" rx="33" ry="16" fill="#e8e4f0" stroke="#c4bde8" stroke-width="1" opacity=".55"/>
-      <ellipse cx="55" cy="86" rx="26" ry="21" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4"/>
-      <rect x="63" y="55" width="10" height="26" rx="5" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4" transform="rotate(10 63 55)"/>
-      <rect x="50" y="51" width="10" height="28" rx="5" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4"/>
-      <rect x="37" y="55" width="10" height="26" rx="5" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4" transform="rotate(-10 37 55)"/>
-      <ellipse cx="76" cy="80" rx="8" ry="11" fill="#f5d0a9" stroke="#c8956a" stroke-width="1.4" transform="rotate(20 76 80)"/>
-      <path d="M 55 63 A 20 16 0 1 1 54 63" fill="none" stroke="#7f77dd" stroke-width="1.8" stroke-dasharray="5,3"/>
-      <polygon points="54,63 48,56 58,55" fill="#7f77dd"/>
-    </svg>`
-  }
+  'hello':    { label:'Hello',   emoji:'👋🏻', gif:'hello.gif',    audio:'hello.mp3',   desc:'Open hand wave near forehead.' },
+  'ok':       { label:'OK',      emoji:'👌🏻', gif:'ok.gif',       audio:'ok.mp3',      desc:'Index fingertip touches thumb, forming a circle.' },
+  'yes':      { label:'Yes',     emoji:'✊',   gif:'yes.gif',      audio:'yes.mp3',     desc:'Fist bobbing up and down — like a nod.' },
+  'no':       { label:'No',      emoji:'✌️',  gif:'no.gif',       audio:'no.mp3',      desc:'Index and middle fingers snap down onto thumb.' },
+  'call me':  { label:'Call Me', emoji:'🤙🏻', gif:'call_me.gif',  audio:'callme.mp3',  desc:'Pinky and thumb extended, three fingers curled.' },
 };
-const wordList = Object.keys(aslData);
-const refIdMap = { hello:'ref-hello', 'thank you':'ref-thankyou', yes:'ref-yes', no:'ref-no', please:'ref-please' };
-const rsvIdMap = { hello:'rsv-hello', 'thank you':'rsv-thankyou', yes:'rsv-yes', no:'rsv-no', please:'rsv-please' };
 
-/* ════════════════════════════════════════
-   NAVIGATION
-════════════════════════════════════════ */
+const wordList = Object.keys(aslData);
+const refIdMap = {
+  'hello':'ref-hello', 'ok':'ref-ok', 'yes':'ref-yes',
+  'no':'ref-no', 'call me':'ref-callme'
+};
+const rsvIdMap = {
+  'hello':'rsv-hello', 'ok':'rsv-ok', 'yes':'rsv-yes',
+  'no':'rsv-no', 'call me':'rsv-callme'
+};
+
+/* ═══ NAVIGATION ═══ */
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -368,9 +305,7 @@ function showScreen(id) {
 }
 function goHome() { stopCamera(); stopMic(); showScreen('home'); }
 
-/* ════════════════════════════════════════
-   SCREEN A — word chips + gesture render
-════════════════════════════════════════ */
+/* ═══ SCREEN A — select + render gesture ═══ */
 function selectWord(word) {
   document.querySelectorAll('.word-chip').forEach(c =>
     c.classList.toggle('active', c.dataset.word === word));
@@ -379,22 +314,23 @@ function selectWord(word) {
 
 function renderGesture(word) {
   const d = aslData[word]; if (!d) return;
-  const cap = word.charAt(0).toUpperCase() + word.slice(1);
   document.getElementById('gesture-display').innerHTML = `
-    <div class="hand-float gesture-anim">${d.svg()}</div>
-    <div class="gesture-label">${cap}</div>
-    <p class="gesture-desc">${d.desc}</p>
-    <button class="speak-btn-sm" onclick="utter('${cap}')">🔊 Read aloud</button>`;
+    <div class="gesture-anim" style="display:flex;align-items:center;justify-content:center;">
+      <img src="${d.gif}" alt="${d.label} ASL gesture"
+           style="max-height:200px;max-width:100%;border-radius:12px;object-fit:contain;"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+      <div style="display:none;font-size:4rem;">${d.emoji}</div>
+    </div>
+    <div class="gesture-word-label">${d.label}</div>
+    <div class="gesture-sign-label">${d.emoji} ASL Sign</div>
+    <button class="speak-btn-sm" style="margin-top:.4rem" onclick="playAudio('${word}')">🔊 Read aloud</button>`;
 }
 
-/* ════════════════════════════════════════
-   SCREEN A — microphone
-════════════════════════════════════════ */
+/* ═══ SCREEN A — mic ═══ */
 let recognition = null, micOn = false;
-
 function toggleMic() {
   if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
-    alert('Speech recognition requires Chrome — please open in Chrome.'); return;
+    alert('Speech recognition requires Chrome.'); return;
   }
   if (micOn) { stopMic(); return; }
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -404,15 +340,15 @@ function toggleMic() {
     const heard = e.results[0][0].transcript.toLowerCase().trim();
     const match = wordList.find(k => heard.includes(k));
     if (match) { selectWord(match); document.getElementById('mic-sub').textContent = `Heard: "${heard}" ✓`; }
-    else document.getElementById('mic-sub').textContent = `"${heard}" not in demo — try: hello, thank you, yes, no, please`;
+    else document.getElementById('mic-sub').textContent = `"${heard}" not in demo — try: hello, ok, yes, no, call me`;
   };
   recognition.onend = () => { micOn = false; resetMicUI(); };
-  recognition.onerror  = () => { stopMic(); };
+  recognition.onerror = () => { stopMic(); };
   recognition.start(); micOn = true;
   document.getElementById('mic-btn').classList.add('recording');
   document.getElementById('mic-btn').textContent = '⏹';
   document.getElementById('mic-label').textContent = 'Listening…';
-  document.getElementById('mic-sub').textContent = 'Speak now — say hello, thank you, yes, no, or please';
+  document.getElementById('mic-sub').textContent = 'Speak now — say hello, ok, yes, no, or call me';
 }
 function stopMic() {
   try { recognition && recognition.stop(); } catch(e){}
@@ -422,34 +358,24 @@ function resetMicUI() {
   const b = document.getElementById('mic-btn'); if (!b) return;
   b.classList.remove('recording'); b.textContent = '🎤';
   document.getElementById('mic-label').textContent = 'Tap to speak';
-  document.getElementById('mic-sub').textContent = 'Say: Hello, Thank You, Yes, No, or Please';
+  document.getElementById('mic-sub').textContent = 'Say: Hello, OK, Yes, No, or Call Me';
 }
 
-/* ════════════════════════════════════════
-   SCREEN B — setup & ref chips
-════════════════════════════════════════ */
+/* ═══ SCREEN B — setup ref chips (emoji only, no animation) ═══ */
 let screenBReady = false;
 function setupScreenB() {
-  if (!screenBReady) {
-    wordList.forEach(word => {
-      const slot = document.getElementById(rsvIdMap[word]);
-      if (!slot || slot.children.length) return;
-      const tmp = document.createElement('div');
-      tmp.innerHTML = aslData[word].svg();
-      const svg = tmp.querySelector('svg');
-      svg.setAttribute('width','42'); svg.setAttribute('height','48');
-      slot.appendChild(svg);
-    });
-    screenBReady = true;
-  }
+  if (screenBReady) return;
+  wordList.forEach(word => {
+    const slot = document.getElementById(rsvIdMap[word]); if (!slot) return;
+    slot.innerHTML = `<span style="font-size:2rem;line-height:1">${aslData[word].emoji}</span>`;
+  });
+  screenBReady = true;
 }
 
+/* ═══ SCREEN B — ref chip pick ═══ */
 let detectedWord = null;
 function pickRef(word) {
-  detectedWord = word;
-  document.querySelectorAll('.ref-chip').forEach(c => c.classList.remove('detected'));
-  document.getElementById(refIdMap[word]).classList.add('detected');
-  showBTranslation(word, 'manual');
+  showBTranslation(word, 'manual', 1);
 }
 function showBTranslation(word, source, conf) {
   detectedWord = word;
@@ -458,37 +384,29 @@ function showBTranslation(word, source, conf) {
   const d = aslData[word]; if (!d) return;
   document.getElementById('b-ph').style.display = 'none';
   document.getElementById('b-result').style.display = 'block';
-  document.getElementById('b-word').textContent = word.charAt(0).toUpperCase() + word.slice(1);
+  document.getElementById('b-word').textContent = d.label + ' ' + d.emoji;
   document.getElementById('b-desc').textContent = d.desc;
-  document.getElementById('b-conf').textContent = source === 'camera'
-    ? `Detected by camera · confidence ${Math.round(conf*100)}%` : 'Manually selected';
+  document.getElementById('b-conf').textContent =
+    source === 'camera' ? `Detected by camera · confidence ${Math.round(conf*100)}%` : 'Manually selected';
 }
 
-/* ════════════════════════════════════════
-   SCREEN B — MediaPipe Hands detection
-════════════════════════════════════════ */
+/* ═══ SCREEN B — MediaPipe Camera ═══ */
 let camStream = null, camOn = false;
 let mpHands = null, mpCamera = null;
-
-// Rolling buffer for stable detection (avoid flickering)
-let detectionBuffer = [];
+let detectionBuffer = [], lastAnnounced = null, announceTimeout = null;
 const BUFFER_SIZE = 8;
-let lastAnnounced = null;
-let announceTimeout = null;
 
 async function toggleCamera() {
   if (camOn) { stopCamera(); return; }
   try {
-    camStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width:640, height:480 }, audio: false });
+    camStream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode:'user', width:640, height:480 }, audio: false
+    });
     const video = document.getElementById('video-feed');
     video.srcObject = camStream;
-    await new Promise(r => video.onloadedmetadata = r);
-
-    // Size canvas to match video
+    await new Promise(r => { video.onloadedmetadata = r; });
     const canvas = document.getElementById('landmark-canvas');
-    canvas.width  = video.videoWidth;
-    canvas.height = video.videoHeight;
-
+    canvas.width = video.videoWidth; canvas.height = video.videoHeight;
     video.classList.add('on');
     document.getElementById('cam-ph').style.display = 'none';
     document.getElementById('cam-toggle').textContent = 'Stop Camera';
@@ -496,7 +414,6 @@ async function toggleCamera() {
     document.getElementById('cam-live').style.display = 'inline-flex';
     document.getElementById('conf-bar-wrap').classList.add('visible');
     camOn = true;
-
     initMediaPipe(video, canvas);
   } catch(err) {
     alert('Camera access denied — please allow camera access in your browser settings.');
@@ -504,9 +421,9 @@ async function toggleCamera() {
 }
 
 function stopCamera() {
-  if (mpCamera)  { try { mpCamera.stop(); } catch(e){} mpCamera = null; }
-  if (mpHands)   { try { mpHands.close(); } catch(e){} mpHands = null; }
-  if (camStream) { camStream.getTracks().forEach(t => t.stop()); camStream = null; }
+  if (mpCamera) { try { mpCamera.stop(); } catch(e){} mpCamera = null; }
+  if (mpHands)  { try { mpHands.close(); } catch(e){} mpHands = null; }
+  if (camStream){ camStream.getTracks().forEach(t => t.stop()); camStream = null; }
   document.getElementById('video-feed').classList.remove('on');
   const ph = document.getElementById('cam-ph'); if (ph) ph.style.display = 'flex';
   const bt = document.getElementById('cam-toggle'); if (bt) { bt.textContent = 'Start Camera'; bt.classList.remove('stop'); }
@@ -514,50 +431,41 @@ function stopCamera() {
   document.getElementById('conf-bar-wrap').classList.remove('visible');
   document.getElementById('detect-badge').classList.remove('visible');
   const ctx = document.getElementById('landmark-canvas').getContext('2d');
-  ctx.clearRect(0, 0, 9999, 9999);
+  ctx.clearRect(0,0,9999,9999);
   detectionBuffer = []; lastAnnounced = null; camOn = false;
 }
 
 function initMediaPipe(video, canvas) {
   const ctx = canvas.getContext('2d');
-
   mpHands = new Hands({ locateFile: f => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${f}` });
-  mpHands.setOptions({ maxNumHands: 1, modelComplexity: 1, minDetectionConfidence: 0.7, minTrackingConfidence: 0.6 });
-
+  mpHands.setOptions({ maxNumHands:1, modelComplexity:1, minDetectionConfidence:0.7, minTrackingConfidence:0.6 });
   mpHands.onResults(results => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (!results.multiHandLandmarks || results.multiHandLandmarks.length === 0) {
-      updateConfBar(0);
-      pushBuffer(null);
-      return;
+    if (!results.multiHandLandmarks || !results.multiHandLandmarks.length) {
+      updateConfBar(0); pushBuffer(null); return;
     }
-    const landmarks = results.multiHandLandmarks[0];
-
-    // Draw landmarks
-    drawConnectors(ctx, landmarks, HAND_CONNECTIONS, { color: 'rgba(15,110,86,0.7)', lineWidth: 2 });
-    drawLandmarks(ctx, landmarks, { color: '#1d9e75', fillColor: '#e1f5ee', lineWidth: 1, radius: 4 });
-
-    // Classify gesture
-    const { word, confidence } = classifyASL(landmarks);
+    const lm = results.multiHandLandmarks[0];
+    drawConnectors(ctx, lm, HAND_CONNECTIONS, { color:'rgba(15,110,86,0.7)', lineWidth:2 });
+    drawLandmarks(ctx, lm, { color:'#1d9e75', fillColor:'#e1f5ee', lineWidth:1, radius:4 });
+    const { word, confidence } = classifyASL(lm);
     updateConfBar(confidence);
     pushBuffer(word);
-
-    // Stable detection: if same word appears BUFFER_SIZE times in a row
-    const stable = detectionBuffer.every(w => w === word) && word !== null && detectionBuffer.length === BUFFER_SIZE;
+    const stable = detectionBuffer.length === BUFFER_SIZE &&
+                   detectionBuffer.every(w => w === word) && word !== null;
     if (stable && word !== lastAnnounced) {
       lastAnnounced = word;
       showBTranslation(word, 'camera', confidence);
+      playAudio(word);
       const badge = document.getElementById('detect-badge');
-      badge.textContent = word.charAt(0).toUpperCase() + word.slice(1) + ' detected';
+      badge.textContent = aslData[word].label + ' detected ✓';
       badge.classList.add('visible');
       clearTimeout(announceTimeout);
       announceTimeout = setTimeout(() => badge.classList.remove('visible'), 2500);
     }
   });
-
   mpCamera = new Camera(video, {
     onFrame: async () => { if (camOn) await mpHands.send({ image: video }); },
-    width: 640, height: 480
+    width:640, height:480
   });
   mpCamera.start();
 }
@@ -566,86 +474,100 @@ function pushBuffer(word) {
   detectionBuffer.push(word);
   if (detectionBuffer.length > BUFFER_SIZE) detectionBuffer.shift();
 }
-
 function updateConfBar(conf) {
   document.getElementById('conf-bar').style.width = (conf * 100) + '%';
 }
-/* ════════════════════════════════════════
-   ASL GESTURE CLASSIFICATION
-   Uses MediaPipe 21-landmark hand model.
-   Landmark indices:
-     0=wrist, 1-4=thumb, 5-8=index,
+
+/* ═══════════════════════════════════════════
+   ASL CLASSIFICATION — MediaPipe 21 landmarks
+   Landmark map:
+     0=wrist
+     1-4=thumb (1=cmc,2=mcp,3=ip,4=tip)
+     5-8=index (5=mcp,6=pip,7=dip,8=tip)
      9-12=middle, 13-16=ring, 17-20=pinky
-════════════════════════════════════════ */
+═══════════════════════════════════════════ */
 function classifyASL(lm) {
-  // Helper: is finger extended (tip above pip joint in y)?
-  // In MediaPipe coords: y increases downward, so tip.y < pip.y means extended upward
-  function extended(tipIdx, pipIdx) {
-    return lm[tipIdx].y < lm[pipIdx].y - 0.03;
-  }
-  function curled(tipIdx, mcpIdx) {
-    return lm[tipIdx].y > lm[mcpIdx].y + 0.02;
-  }
-
-  const idx_ext  = extended(8, 6);   // index extended
-  const mid_ext  = extended(12, 10); // middle extended
-  const ring_ext = extended(16, 14); // ring extended
-  const pink_ext = extended(20, 18); // pinky extended
-  const idx_curl = curled(8, 5);
-  const mid_curl = curled(12, 9);
-  const ring_curl= curled(16, 13);
-  const pink_curl= curled(20, 17);
-
-  // Thumb: extended if tip is far left/right from mcp
-  const thumb_ext = Math.abs(lm[4].x - lm[2].x) > 0.06;
-
-  // All four main fingers extended (open hand) → Hello or Thank You or Please
-  const allFingers = idx_ext && mid_ext && ring_ext && pink_ext;
-  // Fist: all fingers curled
-  const allCurled = idx_curl && mid_curl && ring_curl && pink_curl;
-  // Two fingers extended (index + middle), rest curled → No
-  const twoFingers = idx_ext && mid_ext && !ring_ext && !pink_ext;
-
-  // --- HELLO: open hand, wrist near forehead (high y in frame = high up)
-  // Wrist y < 0.45 means hand is in upper half of frame
-  if (allFingers && lm[0].y < 0.45) {
-    return { word: 'hello', confidence: 0.85 };
+  // Finger extended: tip significantly above pip (smaller y = higher in frame)
+  function ext(tip, pip) { return lm[tip].y < lm[pip].y - 0.04; }
+  // Finger curled: tip below mcp
+  function curl(tip, mcp) { return lm[tip].y > lm[mcp].y - 0.01; }
+  // Distance between two landmarks (normalised)
+  function dist(a, b) {
+    const dx = lm[a].x - lm[b].x, dy = lm[a].y - lm[b].y;
+    return Math.sqrt(dx*dx + dy*dy);
   }
 
-  // --- THANK YOU: flat open hand, fingertips near face (wrist y between 0.3-0.6)
-  // fingers pointing forward/up, hand mid-height
-  if (allFingers && lm[0].y >= 0.35 && lm[0].y <= 0.65) {
-    // Distinguish from Please: palm roughly facing camera (z depth of tips < wrist z)
-    const avgTipZ = (lm[8].z + lm[12].z + lm[16].z + lm[20].z) / 4;
-    if (avgTipZ < lm[0].z + 0.05) {
-      return { word: 'thank you', confidence: 0.78 };
-    }
+  const idx  = ext(8,6);
+  const mid  = ext(12,10);
+  const ring = ext(16,14);
+  const pink = ext(20,18);
+  const idxC = curl(8,5);
+  const midC = curl(12,9);
+  const ringC= curl(16,13);
+  const pinkC= curl(20,17);
+
+  // YES — fist: all 4 main fingers curled
+  if (idxC && midC && ringC && pinkC) {
+    return { word:'yes', confidence:0.90 };
   }
 
-  // --- PLEASE: open hand, palm rotating (wrist mid-frame, palm facing chest = tips point toward camera)
-  if (allFingers && lm[0].y > 0.45) {
-    return { word: 'please', confidence: 0.75 };
+  // NO — index + middle extended, ring + pinky curled
+  if (idx && mid && ringC && pinkC && !idxC && !midC) {
+    return { word:'no', confidence:0.85 };
   }
 
-  // --- YES: fist shape (all main fingers curled, wrist any position)
-  if (allCurled) {
-    return { word: 'yes', confidence: 0.88 };
+  // OK — thumb tip close to index tip (pinch), other fingers extended
+  const thumbIndexDist = dist(4, 8);
+  if (thumbIndexDist < 0.07 && mid && ring && pink) {
+    return { word:'ok', confidence: Math.min(0.95, 0.5 + (0.07 - thumbIndexDist) * 12) };
   }
-  // --- NO: index + middle extended, rest curled (two-finger point)
-  if (twoFingers) {
-    return { word: 'no', confidence: 0.82 };
+
+  // CALL ME — only pinky + thumb extended, index+middle+ring curled
+  const thumbExt = lm[4].y < lm[3].y - 0.03;
+  if (pink && thumbExt && idxC && midC && ringC) {
+    return { word:'call me', confidence:0.85 };
   }
-  return { word: null, confidence: 0 };
+
+  // HELLO — open palm (all 4 fingers extended), hand in upper half of frame
+  // finger open checks
+const thumbOpen = lm[4].x < lm[3].x; // thumb side
+const indexOpen = lm[8].y < lm[6].y;
+const middleOpen = lm[12].y < lm[10].y;
+const ringOpen = lm[16].y < lm[14].y;
+const pinkyOpen = lm[20].y < lm[18].y;
+
+// hand position (upper part of screen)
+const handUp = lm[0].y < 0.6;
+
+// spread check (important for open palm)
+const spread =
+  Math.abs(lm[8].x - lm[12].x) > 0.03 &&
+  Math.abs(lm[12].x - lm[16].x) > 0.03;
+
+// FINAL CONDITION
+if (thumbOpen && indexOpen && middleOpen && ringOpen && pinkyOpen && handUp && spread) {
+    return { word: "hello", confidence: 0.9 };
 }
-// SPEECH
-function utter(text) {
-  window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'en-US'; window.speechSynthesis.speak(u);
+
+  return { word:null, confidence:0 };
+}
+
+/* ═══ AUDIO — MP3 files ═══ */
+let currentAudio = null;
+function playAudio(word) {
+  const d = aslData[word]; if (!d) return;
+  if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+  currentAudio = new Audio(d.audio);
+  currentAudio.play().catch(() => {
+    // Fallback to TTS if audio file not found
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(d.label);
+    u.lang = 'en-US'; window.speechSynthesis.speak(u);
+  });
 }
 function speakDetected() {
   if (!detectedWord) { alert('No translation yet — perform a sign or click a chip.'); return; }
-  utter(detectedWord.charAt(0).toUpperCase() + detectedWord.slice(1));
+  playAudio(detectedWord);
 }
 </script>
 </body>
